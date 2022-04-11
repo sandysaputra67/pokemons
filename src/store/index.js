@@ -11,8 +11,7 @@ export default new Vuex.Store({
   state: {
     pokemons: [],
     pokemonDetail: {},
-
-
+    
   },
   mutations: {
     GET_POKEMONS (state, pokemons) {
