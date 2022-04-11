@@ -5,12 +5,13 @@ import InfiniteLoading from 'vue-infinite-loading';
 Vue.use(Vuex)
 Vue.use(InfiniteLoading)
 
-const API = 'https://pokeapi.co/api/v2/pokemon/'
+const API = 'https://pokeapi.co/api/v2/generation/1/'
 
 export default new Vuex.Store({
   state: {
     pokemons: [],
     pokemonDetail: {},
+
 
   },
   mutations: {

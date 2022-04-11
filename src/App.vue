@@ -4,19 +4,17 @@
     <v-main class="grey lighten-5 ">
       <router-view />
     </v-main>
-    <footer />
+  
   </v-app>
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
-import footer from '@/components/footer.vue'
+import navbar from '@/components/navbar.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBar,
-    footer
+    navbar,
   },
 
   data: () => ({
