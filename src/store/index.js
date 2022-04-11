@@ -5,7 +5,7 @@ import InfiniteLoading from 'vue-infinite-loading';
 Vue.use(Vuex)
 Vue.use(InfiniteLoading)
 
-const API = 'https://pokeapi.co/api/v2/generation/1/'
+const API = 'https://pokeapi.co/api/v2/pokemon/'
 
 export default new Vuex.Store({
   state: {
