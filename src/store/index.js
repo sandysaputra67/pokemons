@@ -34,11 +34,8 @@ export default new Vuex.Store({
             return res.json()
         })
         .then( data => {
-           let region = data.main_region.name
-     
           commit('GET_POKEMONS',
             data.pokemon_species.map(pokemon => {
-              pokemon.region = region
               pokemon.id = pokemon.url.split('/')
                 .filter(part => {return !!part}).pop()
               return pokemon
