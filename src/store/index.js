@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import InfiniteLoading from 'vue-infinite-loading';
-import axios from 'axios'
 Vue.use(Vuex)
 Vue.use(InfiniteLoading)
 
@@ -16,6 +15,9 @@ export default new Vuex.Store({
   mutations: {
     GET_POKEMONS (state, pokemons) {
       state.pokemons = pokemons
+    },
+    REGION (state, region) {
+      state.region = region
     },
     DETAIL_POKEMON (state, detail) {
       state.pokemonDetail = detail
