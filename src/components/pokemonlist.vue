@@ -19,6 +19,10 @@
       <v-col cols="12" sm="6" md="6" lg="4" v-for="(pokemon, index) in pokeFilter" :key="index">
 
         <v-card outlined shaped class="mx-auto px-3" :max-width="270" >
+         <v-btn icon color="#FF0000" style="cursor: pointer;" @click.prevent="addFavorites(pokemon)">
+           <v-icon v-if="!isFavorite" >mdi-heart</v-icon>
+           <v-icon v-else  color="#C8C8C8">mdi-heart</v-icon>
+         </v-btn>
           <v-img
             height="230"
             class="blue-grey lighten-5 rounded mt-4"
@@ -45,27 +49,30 @@
 </template>
 
 <script>
-import { mapState ,mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'pokemondetail',
   data: () => ({
     search: '',
-    pokeImage: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+    pokeImage: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
   }),
   props: {
     spinner: Boolean,
-    pokemons: Array
+    pokemons: Array,
+    isFavorite: Array,
   },
   methods: {
-    ...mapActions(['getPokemons',  'detailPokemon']),
+    ...mapActions(['getPokemons',  'detailPokemon', 'getwishlist']),
     clickDetail (pokemon) {
       this.$router.push({ name: 'pokemondetail', params: {pokemon} })
     },
-
+    addFavorites (pokemons) {
+      this.$store.dispatch('favorites',pokemons)
+    }
   },
   computed: {
-    ...mapState(['region']),
+
     pokeFilter () {
       return this.pokemons.filter(poke => {
         return poke.name.toLowerCase().includes(this.search.toLowerCase()) ||

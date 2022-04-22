@@ -10,15 +10,19 @@ export default new Vuex.Store({
   state: {
     pokemons: [],
     pokemonDetail: {},
-    
+    favorites: [],
   },
   mutations: {
+    GET_WISHLIST(state, pokemons) {
+      state.favorites.push(pokemons)
+    },
+    DELETE_WISHLIST(state, isFavorite){
+      state.favorites.splice(isFavorite, 1)
+    },
     GET_POKEMONS (state, pokemons) {
       state.pokemons = pokemons
     },
-    REGION (state, region) {
-      state.region = region
-    },
+
     DETAIL_POKEMON (state, detail) {
       state.pokemonDetail = detail
     },
@@ -53,8 +57,14 @@ export default new Vuex.Store({
         console.error(rej)
       }
     },
-
+    addFavorites(state,{commit}, pokemons) {
+       isFavorite = state.favorites.map(pokemons);
+      if(isFavorite >= 0) {
+        commit('DELETE_WISHLIST', isFavorite)
+      } else{
+        commit('GET_WISHLIST', pokemons)
+      }
+    }
   },
-  modules: {
-  }
+
 })
